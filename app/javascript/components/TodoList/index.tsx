@@ -14,6 +14,8 @@ type Props = {
 };
 
 const TodoList: React.FC<Props> = ({ todoItems }) => {
+  console.log(todoItems)
+
   useEffect(() => {
     const token = document.querySelector(
       "[name=csrf-token]"
@@ -28,7 +30,7 @@ const TodoList: React.FC<Props> = ({ todoItems }) => {
     axios.post("/todo", {
       id: todoItemId,
       checked: e.target.checked,
-    });
+    }).then(() => location.reload());
   };
 
   const resetButtonOnClick = (): void => {
